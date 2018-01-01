@@ -5,10 +5,11 @@ $(document).ready(function(){
     event.preventDefault();
     let title = $('#title-field').val();
     let body = $('#body-field').val();
+    $('#new-entry').trigger("reset");
     let newEntry = new Entry(title, body);
-    $('#entry-list').append(
+    $('.entry-list').append(
       `<li class="journal-entry">
-       <h2>${title}</h2>
+       <h3>${title}</h3>
        <p>${body}</p>
        </li>`
     );

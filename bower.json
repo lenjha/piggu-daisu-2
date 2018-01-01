@@ -1,0 +1,21 @@
+{
+  "name": "journal",
+  "description": "simple journal using npm, gulp and yarn",
+  "main": "index.js",
+  "authors": [
+    "Luke Bertram <lukebertram@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/lukebertram/journal",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "bootstrap": "^3.3.7"
+  }
+}

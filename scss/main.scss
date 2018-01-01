@@ -1,0 +1,27 @@
+// ABSTRACTS
+// @import
+//   'abstracts/variables',
+//   'abstracts/mixins';
+
+//BASE: browser styling reset, base styles, typography
+// @import
+//   'base/reset',
+//   'base/base',
+//   'base/typography';
+
+//COMPONENTS: buttons, scrollbars, garbagecans
+@import
+  'components/entry-list';
+
+//LAYOUT: styling for individual sections of the layout
+// @import
+//   'layout/hero',
+//   'layout/nav',
+//   'layout/main-section',
+//   'layout/gallery';
+
+//PAGES
+
+//THEMES
+
+//VENDORS: third party modules/libraries/mixins/frameworks
