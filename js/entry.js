@@ -1,3 +1,6 @@
+//an example file for how to define a class
+// to be removed once I can remember how to do this without a reference
+
 class Entry{
   constructor(title, body){
     this.title = title,
