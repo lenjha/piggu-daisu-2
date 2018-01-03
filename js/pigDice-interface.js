@@ -1,32 +1,6 @@
-//back-end bargain bin
-
-//Game object definition
-function Game(playerOne, playerTwo, die, endScore){
-  this.playerOne = playerOne;
-  this.playerTwo = playerTwo;
-  this.die = die;
-  this.endScore = endScore;
-  this.turn = true;
-}
-//
-Game.prototype.currentPlayer = function(){
-  if (this.turn){
-    return this.playerOne;
-  } else {
-    return this.playerTwo;
-  }
-}
-//Die object definition
-function Die(sides){
-  this.numSides = sides;
-  this.result;
-}
-
-Die.prototype.roll = function(){
-  this.result = Math.floor(Math.random() * this.numSides) + 1;
-  return this.result;
-}
-
+const PigDice = require('./../js/PigDice.js').pigDiceModule;
+const Die = require('./../js/Die.js').dieModule;
+const Player = require('./../js/Player.js').playerModule;
 
 function tallyBoard(player, result) {
   if (result === 1) {
@@ -46,12 +20,7 @@ function addScore() {
   }
 }
 
-//Player object definition
-function Player(playerId){
-  this.id = playerId;
-  this.score = 0;
-  this.turnTally = 0;
-}
+
 
 //clear displayed scores and player turn name
 var clearScores = function(){
@@ -67,9 +36,9 @@ var endScore = 100;
 var playerOne = new Player("Tron");
 var playerTwo = new Player("Dripfang");
 var pigDie = new Die(6);
-var game = new Game(playerOne, playerTwo, pigDie, endScore);
+var game = new PigDice(playerOne, playerTwo, pigDie, endScore);
 
-//front-end facsimile
+
 $(document).ready(function(){
   $("#game-start").submit(function(event){
     event.preventDefault();
