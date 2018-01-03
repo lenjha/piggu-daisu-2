@@ -1,16 +1,15 @@
 const PigDice = require('./../js/PigDice.js').pigDiceModule;
-const Die = require('./../js/Die.js').dieModule;
-const Player = require('./../js/Player.js').playerModule;
 
-function tallyBoard(player, result) {
-  if (result === 1) {
-    player.turnTally = 0;
-    game.turn = !game.turn;
-    $("#player-turn").text(game.currentPlayer().id + "'s turn");
-  } else {
-    player.turnTally += result;
-  }
-}
+//
+// function checkRoll(player, result) {
+//   if (result === 1) {
+//     player.turnTally = 0;
+//     game.turn = !game.turn;
+//     $("#player-turn").text(game.currentPlayer().id + "'s turn");
+//   } else {
+//     player.turnTally += result;
+//   }
+// }
 
 function addScore() {
   if (game.turn) {
@@ -18,11 +17,11 @@ function addScore() {
   } else {
     $(".player2 p").text(game.playerTwo.score);
   }
-}
+};
 
 
 
-//clear displayed scores and player turn name
+//helper method to clear displayed scores and player turn name
 var clearScores = function(){
   $("#roll-result").text("");
   $("#tally").text("");
@@ -32,25 +31,30 @@ var clearScores = function(){
 }
 
 //GAME SETUP
-var endScore = 100;
-var playerOne = new Player("Tron");
-var playerTwo = new Player("Dripfang");
-var pigDie = new Die(6);
-var game = new PigDice(playerOne, playerTwo, pigDie, endScore);
-
+var playerOne = 'Player One';
+var playerTwo = 'Player B';
+var game;
 
 $(document).ready(function(){
+  game = new PigDice(playerOne, playerTwo);
   $("#game-start").submit(function(event){
     event.preventDefault();
     //set player names
     var p1 = $("#player-one-name").val();
     var p2 = $("#player-two-name").val();
+
+    //if name field is not empty
     if (p1 !== ""){
-      playerOne.id = p1;
+      //assign submitted name to player one in game
+      game.playerOne.id = p1;
+      //set scoreboard name for player one
       $("#p1-name-board").text(p1);
     }
+    //if name field is not empty
     if (p2 !== ""){
-      playerTwo.id = p2;
+      //assign submitted name to player two in game
+      game.playerTwo.id = p2;
+      //set scoreboard name for player two
       $("#p2-name-board").text(p2);
     }
     //set max score
@@ -59,11 +63,11 @@ $(document).ready(function(){
       game.endScore = goal;
     }
     $(".form-container").hide();
-    $(".hidden").show();
-    playerOne.score = 0;
-    playerTwo.score = 0;
-    playerOne.turnTally = 0;
-    playerTwo.turnTally = 0;
+    $(".hidden").toggleClass('hidden');
+    game.playerOne.score = 0;
+    game.playerTwo.score = 0;
+    game.playerOne.turnTally = 0;
+    game.playerTwo.turnTally = 0;
     clearScores();
     $("#player-turn").text(game.currentPlayer().id + "'s turn");
   })
@@ -73,12 +77,13 @@ $(document).ready(function(){
   $("#roll").click(function(){
     var currentPlayer = game.currentPlayer();
     //roll the die
-    pigDie.roll();
+    game.die.roll();
     //display the result of the roll
-    $("#roll-result").text(pigDie.result);
+    $("#roll-result").text(game.die.result);
     //add the result of the roll to player tally
     // playerOne.turnTally += pigDie.result;
-    tallyBoard(currentPlayer, pigDie.result);
+    var element = $('#player-turn');
+    game.checkRoll(element, currentPlayer, game.die.result);
     //display the new total of player's Turn Tally
     $("#tally").text(currentPlayer.turnTally);
     if ( (currentPlayer.turnTally + currentPlayer.score) >= game.endScore) {

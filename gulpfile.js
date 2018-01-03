@@ -75,7 +75,7 @@ gulp.task('bowerCSS', function() {
     .pipe(gulp.dest('./build/css'));
 });
 
-gulp.task('bower', ['bowerJS', 'bowerCSS']);
+gulp.task('bower', ['bowerJS', 'cssConcat']);
 
 gulp.task('serve', function() {
   browserSync.init({
