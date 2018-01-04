@@ -4,7 +4,7 @@
   "description": "simple journal using npm, gulp and yarn",
   "main": "index.js",
   "scripts": {
-    "test": "karma start karma.conf.js"
+    "test": "nyc karma start karma.conf.js"
   },
   "repository": "git+https://github.com/lukebertram/journal.git",
   "author": "Luke Bertram <lukebertram@gmail.com>",
@@ -14,6 +14,7 @@
   },
   "homepage": "https://github.com/lukebertram/journal#readme",
   "devDependencies": {
+    "babel-plugin-istanbul": "^4.1.5",
     "bower-files": "^4.0.0",
     "browser-sync": "^2.23.1",
     "browserify": "^14.5.0",
@@ -35,6 +36,7 @@
     "karma-jasmine": "^1.1.1",
     "karma-jasmine-html-reporter": "^0.2.2",
     "karma-jquery": "^0.2.2",
+    "nyc": "^11.4.1",
     "vinyl-source-stream": "^2.0.0",
     "watchify": "^3.9.0"
   },
