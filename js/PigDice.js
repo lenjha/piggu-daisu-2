@@ -27,6 +27,14 @@ class PigDice{
       player.turnTally += result;
     }
   }
+
+  testGarbage(){
+    if (false) {
+      return 'computer is broken';
+    } else {
+      return 'you did it';
+    }
+  }
 };
 //
 
